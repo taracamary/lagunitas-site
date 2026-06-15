@@ -17,7 +17,7 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        // Здесь можно добавить глобальные переменные SCSS, если нужно
+        api: 'modern-compiler', // Устраняем Deprecation Warning для Dart Sass
       }
     }
   }
