@@ -1,0 +1,60 @@
+/* ==========================================================================
+   BUTTON COMPONENT (.btn)
+   ========================================================================== */
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--space-sm) var(--space-md);
+  font-family: var(--font-primary);
+  font-size: var(--text-lg);
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  border: 2px solid transparent;
+  transition: all var(--transition-fast);
+  cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  
+  /* A11y: Focus state */
+  &:focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 4px;
+  }
+
+  /* Active state */
+  &:active {
+    transform: scale(0.98);
+  }
+
+  /* Modifiers */
+  &--primary {
+    background-color: var(--color-primary);
+    color: var(--color-text-inverse);
+
+    &:hover {
+      background-color: var(--color-primary-dark);
+    }
+  }
+
+  &--dark {
+    background-color: var(--color-bg-dark);
+    color: var(--color-text-inverse);
+
+    &:hover {
+      background-color: var(--color-text-muted);
+    }
+  }
+
+  &--outline {
+    background-color: transparent;
+    border-color: var(--color-border);
+    color: var(--color-text-main);
+
+    &:hover {
+      background-color: var(--color-bg-dark);
+      color: var(--color-text-inverse);
+    }
+  }
+}

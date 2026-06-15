@@ -1,0 +1,118 @@
+/* ==========================================================================
+   CARD COMPONENTS (.feature-card, .flavor-card)
+   ========================================================================== */
+
+/* 1. Feature Card (ABV, IBU, O.G.) */
+.feature-card {
+  display: flex;
+  flex-direction: column;
+  padding: var(--space-md);
+  border: 2px solid var(--color-border);
+  box-shadow: 4px 4px 0px var(--color-border); /* Modern brutalism touch */
+  background-color: var(--color-bg-main);
+  transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+  height: 100%;
+
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 8px 8px 0px var(--color-border);
+  }
+
+  &__header {
+    margin-bottom: var(--space-sm);
+    border-bottom: 2px solid var(--color-border);
+    padding-bottom: var(--space-xs);
+  }
+
+  &__title {
+    font-size: var(--text-xl);
+    margin-bottom: 0;
+  }
+
+  &__subtitle {
+    font-family: var(--font-text);
+    font-size: var(--text-sm);
+    color: var(--color-text-muted);
+    margin-bottom: 0;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    font-weight: 600;
+  }
+
+  &__body {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: var(--space-sm);
+    margin-top: auto; /* Push to bottom */
+    padding-top: var(--space-sm);
+  }
+
+  &__value {
+    font-family: var(--font-primary);
+    font-size: var(--text-2xl);
+    line-height: 1;
+    display: flex;
+    align-items: flex-start;
+  }
+
+  &__unit {
+    font-size: var(--text-lg);
+    margin-left: 2px;
+    margin-top: 4px;
+  }
+
+  &__desc {
+    font-size: var(--text-xs);
+    margin-bottom: 0;
+    max-width: 120px;
+    line-height: 1.3;
+  }
+}
+
+
+/* 2. Flavor Card (Tropical, Pink, Caramel) */
+.flavor-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: var(--space-xl) var(--space-md);
+  color: var(--color-text-inverse);
+  min-height: 300px;
+  
+  &__bg {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 120%; /* Scale up the splash image */
+    max-width: none;
+    height: auto;
+    object-fit: contain;
+    z-index: var(--z-negative);
+    pointer-events: none;
+  }
+
+  &__content {
+    position: relative;
+    z-index: var(--z-base);
+  }
+
+  &__title {
+    font-size: var(--text-xl);
+    border-bottom: 2px solid currentColor;
+    padding-bottom: var(--space-xs);
+    margin-bottom: var(--space-sm);
+    display: inline-block;
+    letter-spacing: 0.1em;
+  }
+
+  &__desc {
+    font-size: var(--text-sm);
+    max-width: 250px;
+    margin: 0 auto;
+  }
+}
