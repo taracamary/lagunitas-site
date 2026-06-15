@@ -1,0 +1,54 @@
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+
+.hero {
+  /* Overriding base section padding for full-screen hero */
+  padding-top: var(--header-height);
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden; /* Prevent mascot from causing horizontal scroll */
+
+  &__title {
+    position: relative;
+    z-index: var(--z-content);
+    color: var(--color-primary);
+    text-align: center;
+    word-spacing: -0.05em;
+    margin-bottom: 0;
+    
+    /* Texture effect for text (fallback to solid color if image fails) */
+    background-image: url('../../img/texture.png');
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    
+    /* Responsive adjustments */
+    max-width: 90vw;
+    @media (min-width: 768px) {
+      max-width: 70vw;
+    }
+  }
+
+  &__mascot {
+    position: absolute;
+    z-index: var(--z-content);
+    width: clamp(80px, 15vw, 150px);
+    transform: rotate(-30deg);
+    
+    /* Mobile positioning */
+    top: 20%;
+    right: 10%;
+    
+    /* Desktop positioning */
+    @media (min-width: 768px) {
+      top: 25%;
+      left: 30%;
+      right: auto;
+    }
+  }
+}

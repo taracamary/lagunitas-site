@@ -15,7 +15,6 @@
 @use 'components/card';
 
 // 4. Layout (Макро-лейаут: секции, хедер)
-// Закомментировано до следующего шага
-// @use 'layout/header';
-// @use 'layout/hero';
-// @use 'layout/section';
+@use 'layout/header';
+@use 'layout/hero';
+@use 'layout/section';
