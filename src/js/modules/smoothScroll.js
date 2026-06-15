@@ -3,16 +3,14 @@
 // ==========================================================================
 
 export const initScroll = () => {
-  // Инициализируем Lenis (библиотека подключена глобально через CDN в index.html)
+  // Инициализируем Lenis с более отзывчивыми настройками
   const lenis = new window.Lenis({
-    duration: 1.2, // Длительность скролла
-    easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)), // Кастомный easing для плавности
+    lerp: 0.1, // Отзывчивый скролл (убрали вязкий duration)
     smoothWheel: true,
     wheelMultiplier: 1,
     touchMultiplier: 2,
     infinite: false,
   });
 
-  // Возвращаем инстанс, чтобы синхронизировать его с GSAP в другом модуле
   return lenis;
 };

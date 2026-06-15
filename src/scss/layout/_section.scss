@@ -28,14 +28,14 @@ section {
 
 /* Global Bottle (The one that animates across sections) */
 .global-bottle {
-  position: absolute;
+  position: fixed; /* Изменено на fixed для покадровой анимации по всем секциям */
   top: 5vh;
   left: 50%;
-  transform: translateX(-50%);
-  height: clamp(50vh, 80vh, 900px); /* Fluid height */
+  /* transform: translateX(-50%); - Убрали хардкод, теперь GSAP управляет центрированием через xPercent */
+  height: clamp(40vh, 70vh, 800px); /* Чуть уменьшили базовую высоту для лучшего фита */
   width: auto;
   object-fit: contain;
   z-index: var(--z-bottle);
-  pointer-events: none; /* So it doesn't block clicks on content beneath */
-  will-change: transform; /* Hint for browser compositor */
+  pointer-events: none; /* Чтобы не перекрывать клики по контенту */
+  will-change: transform; /* Подсказка для композитора браузера */
 }

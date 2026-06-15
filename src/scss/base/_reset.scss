@@ -21,7 +21,7 @@ html {
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
   font-size: 16px; /* Base size for rem */
-  scroll-behavior: smooth; /* Fallback if JS smooth scroll is disabled */
+  /* Убрали scroll-behavior: smooth, так как он конфликтует с Lenis и вызывает вязкость */
 }
 
 /* 4. Body setup */

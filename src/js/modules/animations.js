@@ -3,38 +3,25 @@
 // ==========================================================================
 
 export const initAnimations = (lenis) => {
-  // Регистрируем плагин (GSAP подключен через CDN)
   const gsap = window.gsap;
   const ScrollTrigger = window.ScrollTrigger;
   
   gsap.registerPlugin(ScrollTrigger);
 
   // 1. Синхронизация Lenis и GSAP ScrollTrigger
-  // Это критически важно, чтобы анимации по скроллу не дергались
   lenis.on('scroll', ScrollTrigger.update);
-
-  gsap.ticker.add((time) => {
-    lenis.raf(time * 1000);
-  });
-
+  gsap.ticker.add((time) => { lenis.raf(time * 1000); });
   gsap.ticker.lagSmoothing(0);
 
   // 2. Стартовая анимация (Hero Section)
-  const heroTl = gsap.timeline({ 
-    defaults: { ease: 'power3.out' } 
-  });
+  const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
 
-  // Прячем элементы перед анимацией (чтобы избежать моргания)
-  gsap.set(['.hero__title', '#js-hero-bottle', '#js-hero-mascot', '.header'], { 
-    opacity: 0, 
-    visibility: 'visible' 
-  });
+  // Важно: для fixed элемента задаем начальный xPercent для точного центрирования
+  gsap.set('#js-hero-bottle', { xPercent: -50, yPercent: 0, rotation: 0, scale: 1 });
+  gsap.set(['.hero__title', '#js-hero-bottle', '#js-hero-mascot', '.header'], { opacity: 0, visibility: 'visible' });
 
   heroTl
-    .fromTo('.hero__title', 
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1, delay: 0.2 }
-    )
+    .fromTo('.hero__title', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1, delay: 0.2 })
     .fromTo('#js-hero-bottle',
       { y: 100, opacity: 0, scale: 0.8 },
       { y: 0, opacity: 1, scale: 1, duration: 1 },
@@ -45,101 +32,80 @@ export const initAnimations = (lenis) => {
       { x: 0, opacity: 1, rotation: -30, duration: 0.8 },
       '-=0.6'
     )
-    .fromTo('.header',
-      { y: -100, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8 },
-      '-=0.8'
-    );
+    .fromTo('.header', { y: -100, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.8');
 
   // 3. Класс для шапки при скролле (Sticky Header)
   ScrollTrigger.create({
-    start: 'top -50', // Срабатывает, когда проскроллили 50px вниз
-    end: 99999, // Действует до самого конца страницы
+    start: 'top -50',
+    end: 99999,
     toggleClass: { className: 'is-scrolled', targets: '.header' }
   });
 
-  // 4. Сквозная анимация главной бутылки (.global-bottle)
-  // Бутылка позиционирована абсолютно, поэтому мы анимируем её 'y' 
-  // на высоту всего документа. Это создает эффект, будто она летит сквозь секции.
-  gsap.to('#js-hero-bottle', {
-    y: () => document.querySelector('.main-content').offsetHeight - window.innerHeight,
-    rotation: -30, // Слегка поворачивается
-    scale: 0.3, // Уменьшается к концу страницы
-    ease: 'none', // Линейная анимация для идеального параллакса
+  // 4. Сквозная покадровая анимация главной бутылки (Master Timeline)
+  // Бутылка имеет position: fixed, поэтому мы анимируем только ее трансформации,
+  // привязав таймлайн к высоте всего документа.
+  const bottleTl = gsap.timeline({
     scrollTrigger: {
       trigger: '.main-content',
       start: 'top top',
       end: 'bottom bottom',
-      scrub: 1 // Плавная привязка к скроллу (1 секунда задержки для мягкости)
+      scrub: true, // Используем true, а не число, так как Lenis УЖЕ сглаживает скролл (избегаем двойной вязкости)
     }
   });
 
-  // 5. Появление контента (Reveal Animations)
+  // Шаг 1: Hero -> About (Сдвигаем влево к тексту, уменьшаем, поворачиваем)
+  bottleTl.to('#js-hero-bottle', {
+    xPercent: -140, // Улетает влево
+    scale: 0.7,
+    rotation: -15,
+    ease: 'none'
+  }, 0) // Старт в самом начале скролла
   
-  // Анимация всех заголовков секций
+  // Шаг 2: About -> Mouthfeel (Перелетает вправо к видео)
+  .to('#js-hero-bottle', {
+    xPercent: 40, // Улетает вправо
+    scale: 0.6,
+    rotation: 15,
+    ease: 'none'
+  }, 0.3) // Начинается на 30% прогресса скролла
+  
+  // Шаг 3: Mouthfeel -> Flavors (Возвращается в центр над кляксами)
+  .to('#js-hero-bottle', {
+    xPercent: -50, // Возврат в центр
+    scale: 0.5,
+    rotation: 0,
+    ease: 'none'
+  }, 0.6) // Начинается на 60% прогресса скролла
+  
+  // Шаг 4: Flavors -> Availability (Уходит вниз и растворяется)
+  .to('#js-hero-bottle', {
+    scale: 0.3,
+    opacity: 0,
+    yPercent: 50,
+    ease: 'none'
+  }, 0.9); // Конец анимации
+
+  // 5. Появление контента (Reveal Animations)
   const headings = gsap.utils.toArray('section h2, section .availability__subtitle');
   headings.forEach((heading) => {
     gsap.fromTo(heading, 
       { y: 40, opacity: 0 },
-      {
-        y: 0, 
-        opacity: 1, 
-        duration: 0.8, 
-        ease: 'power3.out',
-        scrollTrigger: {
-          trigger: heading,
-          start: 'top 85%', // Срабатывает, когда верх элемента достигает 85% высоты окна
-        }
-      }
+      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: heading, start: 'top 85%' } }
     );
   });
 
-  // Stagger-анимация для карточек характеристик (.feature-card)
   gsap.fromTo('.feature-card',
     { y: 60, opacity: 0 },
-    {
-      y: 0,
-      opacity: 1,
-      duration: 0.8,
-      stagger: 0.15, // Задержка между появлением каждой следующей карточки
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '.about__features',
-        start: 'top 80%',
-      }
-    }
+    { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out', scrollTrigger: { trigger: '.about__features', start: 'top 80%' } }
   );
 
-  // Stagger-анимация для карточек вкусов (.flavor-card)
   gsap.fromTo('.flavor-card',
     { y: 80, opacity: 0 },
-    {
-      y: 0,
-      opacity: 1,
-      duration: 1,
-      stagger: 0.2,
-      ease: 'power3.out',
-      scrollTrigger: {
-        trigger: '.flavors',
-        start: 'top 75%',
-      }
-    }
+    { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: 'power3.out', scrollTrigger: { trigger: '.flavors', start: 'top 75%' } }
   );
 
-  // Анимация продуктовых элементов (.product-item)
   gsap.fromTo('.product-item',
     { y: 50, opacity: 0, scale: 0.9 },
-    {
-      y: 0,
-      opacity: 1,
-      scale: 1,
-      duration: 0.6,
-      stagger: 0.1,
-      ease: 'back.out(1.7)', // Эффект легкого "отскока" (bounce) для бутылок
-      scrollTrigger: {
-        trigger: '.availability__grid',
-        start: 'top 80%',
-      }
-    }
+    { y: 0, opacity: 1, scale: 1, duration: 0.6, stagger: 0.1, ease: 'back.out(1.7)', scrollTrigger: { trigger: '.availability__grid', start: 'top 80%' } }
   );
 };
