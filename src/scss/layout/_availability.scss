@@ -1,0 +1,83 @@
+/* ==========================================================================
+   AVAILABILITY SECTION (.availability)
+   ========================================================================== */
+
+.availability {
+  align-items: center;
+  text-align: center;
+
+  &__subtitle {
+    font-family: var(--font-text);
+    font-size: var(--text-xl);
+    font-weight: 600;
+    margin-bottom: var(--space-xs);
+  }
+
+  &__title {
+    font-size: var(--text-hero);
+    margin-bottom: var(--space-xl);
+    
+    /* Texture effect */
+    background-image: url('../../img/texture.png');
+    background-position: top;
+    background-size: cover;
+    background-repeat: no-repeat;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-color: var(--color-bg-dark);
+  }
+
+  &__grid {
+    width: 100%;
+    display: grid;
+    gap: var(--space-lg);
+    grid-template-columns: repeat(2, 1fr); /* Mobile: 2 items per row */
+    align-items: end;
+
+    @media (min-width: 768px) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    @media (min-width: 992px) {
+      grid-template-columns: repeat(5, 1fr); /* Desktop: all 5 in a row */
+    }
+  }
+}
+
+/* Product Item Component (Specific to Availability section) */
+.product-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-sm);
+
+  &__img {
+    height: clamp(150px, 30vh, 300px);
+    width: auto;
+    object-fit: contain;
+    transition: transform var(--transition-normal);
+    
+    /* Add a slight tilt to match original design */
+    transform: rotate(-5deg);
+  }
+
+  &:hover &__img {
+    transform: rotate(0deg) scale(1.05);
+  }
+
+  &__title {
+    font-family: var(--font-secondary);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    margin-bottom: 0;
+    text-transform: none;
+  }
+
+  &__pack {
+    font-family: var(--font-text);
+    font-size: var(--text-sm);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    letter-spacing: 0.05em;
+  }
+}

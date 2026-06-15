@@ -1,0 +1,46 @@
+/* ==========================================================================
+   FLAVORS SECTION (.flavors)
+   ========================================================================== */
+
+.flavors {
+  position: relative;
+  display: grid;
+  gap: var(--space-xl);
+  grid-template-columns: 1fr;
+  
+  /* Make room for the jar on desktop */
+  @media (min-width: 992px) {
+    grid-template-columns: repeat(3, 1fr);
+    padding-bottom: 20vh; /* Extra space for the floating jar */
+  }
+
+  /* Specific positioning for flavor cards to create a staggered look on desktop */
+  .flavor-card {
+    @media (min-width: 992px) {
+      &--tropical {
+        transform: translateY(0);
+      }
+      &--pink {
+        transform: translateY(20%);
+      }
+      &--caramel {
+        transform: translateY(10%);
+      }
+    }
+  }
+
+  &__jar-img {
+    display: none; /* Hide on mobile to save space */
+    
+    @media (min-width: 992px) {
+      display: block;
+      position: absolute;
+      bottom: -10%;
+      right: 10%;
+      width: clamp(200px, 20vw, 300px);
+      transform: rotate(-15deg);
+      z-index: var(--z-content);
+      filter: drop-shadow(10px 20px 30px rgba(0,0,0,0.3));
+    }
+  }
+}

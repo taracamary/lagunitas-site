@@ -1,0 +1,67 @@
+/* ==========================================================================
+   RECIPES SECTION (.recipes)
+   ========================================================================== */
+
+.recipes {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-lg);
+  
+  /* Remove side padding on mobile so image can bleed to edges */
+  padding-left: 0;
+  padding-right: 0;
+
+  @media (min-width: 992px) {
+    flex-direction: row;
+    align-items: center;
+    padding-left: var(--container-padding);
+    padding-right: var(--container-padding);
+  }
+
+  &__image-wrapper {
+    flex: 1;
+    width: 100%;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    max-height: 60vh;
+    object-fit: cover;
+    
+    @media (min-width: 992px) {
+      border-radius: 16px;
+    }
+  }
+
+  &__content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 0 var(--container-padding);
+    
+    @media (min-width: 992px) {
+      padding: 0 var(--space-xl);
+    }
+  }
+
+  &__subtitle {
+    font-family: var(--font-text);
+    font-size: var(--text-lg);
+    font-weight: 600;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-xs);
+  }
+
+  &__title {
+    font-size: var(--text-2xl);
+    letter-spacing: 0.05em;
+    line-height: 1.2;
+    margin-bottom: var(--space-md);
+  }
+
+  &__text {
+    margin-bottom: var(--space-lg);
+  }
+}
