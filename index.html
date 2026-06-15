@@ -16,8 +16,7 @@
     <!-- Smooth Scroll (Lenis CSS) -->
     <link rel="stylesheet" href="https://unpkg.com/lenis@1.0.45/dist/lenis.css">
     
-    <!-- Main Styles -->
-    <link rel="stylesheet" href="src/scss/style.css"> <!-- Предполагаем, что SCSS скомпилируется сюда -->
+    <!-- Стили теперь подключаются через Vite в main.js -->
 </head>
 <body>
 
@@ -224,7 +223,8 @@
     <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <!-- Подключим наши модули позже -->
-    <!-- <script type="module" src="src/js/main.js"></script> -->
+    
+    <!-- Точка входа Vite -->
+    <script type="module" src="/src/js/main.js"></script>
 </body>
 </html>
