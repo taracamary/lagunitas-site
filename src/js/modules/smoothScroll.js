@@ -1,15 +1,12 @@
-// ==========================================================================
-// SMOOTH SCROLL (LENIS)
-// ==========================================================================
-
 export const initScroll = () => {
-  // Инициализируем Lenis с более отзывчивыми настройками
   const lenis = new window.Lenis({
-    lerp: 0.1, // Отзывчивый скролл (убрали вязкий duration)
+    lerp: 0.1,
     smoothWheel: true,
     wheelMultiplier: 1,
     touchMultiplier: 2,
     infinite: false,
+    orientation: 'vertical',
+    gestureOrientation: 'vertical',
   });
 
   return lenis;

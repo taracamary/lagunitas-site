@@ -1,111 +1,186 @@
-// ==========================================================================
-// GSAP ANIMATIONS & SCROLLTRIGGER
-// ==========================================================================
-
 export const initAnimations = (lenis) => {
-  const gsap = window.gsap;
-  const ScrollTrigger = window.ScrollTrigger;
-  
+  const { gsap } = window;
+  const { ScrollTrigger } = window;
+
   gsap.registerPlugin(ScrollTrigger);
-
-  // 1. Синхронизация Lenis и GSAP ScrollTrigger
   lenis.on('scroll', ScrollTrigger.update);
-  gsap.ticker.add((time) => { lenis.raf(time * 1000); });
+  gsap.ticker.add((time) => lenis.raf(time * 1000));
   gsap.ticker.lagSmoothing(0);
-
-  // 2. Стартовая анимация (Hero Section)
-  const heroTl = gsap.timeline({ defaults: { ease: 'power3.out' } });
-
-  // Важно: для fixed элемента задаем начальный xPercent для точного центрирования
-  gsap.set('#js-hero-bottle', { xPercent: -50, yPercent: 0, rotation: 0, scale: 1 });
-  gsap.set(['.hero__title', '#js-hero-bottle', '#js-hero-mascot', '.header'], { opacity: 0, visibility: 'visible' });
-
-  heroTl
-    .fromTo('.hero__title', { y: 50, opacity: 0 }, { y: 0, opacity: 1, duration: 1, delay: 0.2 })
-    .fromTo('#js-hero-bottle',
-      { y: 100, opacity: 0, scale: 0.8 },
-      { y: 0, opacity: 1, scale: 1, duration: 1 },
-      '-=0.6'
-    )
-    .fromTo('#js-hero-mascot',
-      { x: 50, opacity: 0, rotation: 0 },
-      { x: 0, opacity: 1, rotation: -30, duration: 0.8 },
-      '-=0.6'
-    )
-    .fromTo('.header', { y: -100, opacity: 0 }, { y: 0, opacity: 1, duration: 0.8 }, '-=0.8');
-
-  // 3. Класс для шапки при скролле (Sticky Header)
-  ScrollTrigger.create({
-    start: 'top -50',
-    end: 99999,
-    toggleClass: { className: 'is-scrolled', targets: '.header' }
+  gsap.set('.global-bottle', {
+    xPercent: -50,
+    rotation: 0,
+    scale: 0.2,
+    opacity: 0,
+  });
+  gsap.set('#js-hero-mascot', {
+    rotation: -30,
+    scale: 0.1,
+    opacity: 0,
   });
 
-  // 4. Сквозная покадровая анимация главной бутылки (Master Timeline)
-  // Бутылка имеет position: fixed, поэтому мы анимируем только ее трансформации,
-  // привязав таймлайн к высоте всего документа.
-  const bottleTl = gsap.timeline({
+  const heroTl = gsap.timeline();
+
+  heroTl
+    .to('#js-hero-mascot', {
+      opacity: 1,
+      scale: 1,
+      duration: 1,
+      ease: 'power3.out',
+    })
+    .to(
+      '.global-bottle',
+      {
+        opacity: 1,
+        scale: 1,
+        duration: 1,
+        ease: 'power3.out',
+      },
+      '-=0.4'
+    )
+    .from(
+      '.header__cta',
+      {
+        xPercent: 200,
+        duration: 0.6,
+        ease: 'power3.out',
+      },
+      '-=0.2'
+    );
+
+  gsap.to('.global-bottle', {
+    rotation: -15,
+    ease: 'none',
     scrollTrigger: {
       trigger: '.main-content',
       start: 'top top',
-      end: 'bottom bottom',
-      scrub: true, // Используем true, а не число, так как Lenis УЖЕ сглаживает скролл (избегаем двойной вязкости)
-    }
+      end: () => `+=${window.innerHeight * 4.16}`,
+      scrub: true,
+    },
   });
 
-  // Шаг 1: Hero -> About (Сдвигаем влево к тексту, уменьшаем, поворачиваем)
-  bottleTl.to('#js-hero-bottle', {
-    xPercent: -140, // Улетает влево
-    scale: 0.7,
-    rotation: -15,
-    ease: 'none'
-  }, 0) // Старт в самом начале скролла
-  
-  // Шаг 2: About -> Mouthfeel (Перелетает вправо к видео)
-  .to('#js-hero-bottle', {
-    xPercent: 40, // Улетает вправо
-    scale: 0.6,
-    rotation: 15,
-    ease: 'none'
-  }, 0.3) // Начинается на 30% прогресса скролла
-  
-  // Шаг 3: Mouthfeel -> Flavors (Возвращается в центр над кляксами)
-  .to('#js-hero-bottle', {
-    xPercent: -50, // Возврат в центр
-    scale: 0.5,
-    rotation: 0,
-    ease: 'none'
-  }, 0.6) // Начинается на 60% прогресса скролла
-  
-  // Шаг 4: Flavors -> Availability (Уходит вниз и растворяется)
-  .to('#js-hero-bottle', {
-    scale: 0.3,
-    opacity: 0,
-    yPercent: 50,
-    ease: 'none'
-  }, 0.9); // Конец анимации
+  const availabilityTarget = document.querySelector('#js-availability-bottle');
+  const globalBottle = document.querySelector('.global-bottle');
 
-  // 5. Появление контента (Reveal Animations)
-  const headings = gsap.utils.toArray('section h2, section .availability__subtitle');
-  headings.forEach((heading) => {
-    gsap.fromTo(heading, 
+  gsap.set('#js-availability-bottle', { opacity: 0 });
+
+  const flyTl = gsap.timeline({
+    scrollTrigger: {
+      trigger: '#js-availability-bottle',
+      start: 'center 80%',
+      end: 'center center',
+      scrub: true,
+      invalidateOnRefresh: true,
+    },
+  });
+
+  flyTl
+    .to('.global-bottle', {
+      ease: 'none',
+      x: () => {
+        const tR = availabilityTarget.getBoundingClientRect();
+        const bR = globalBottle.getBoundingClientRect();
+        const targetCenterX = tR.left + tR.width / 2;
+        const bottleCenterX = bR.left + bR.width / 2;
+        return targetCenterX - bottleCenterX;
+      },
+      y: () => {
+        const bR = globalBottle.getBoundingClientRect();
+        const bottleCenterY = bR.top + bR.height / 2;
+        return window.innerHeight / 2 - bottleCenterY;
+      },
+      scale: () => availabilityTarget.offsetHeight / globalBottle.offsetHeight,
+      rotation: -5,
+      opacity: 0,
+    })
+    .to('#js-availability-bottle', { opacity: 1, ease: 'none' }, '<');
+
+  ScrollTrigger.create({
+    start: 'top -50',
+    end: 99999,
+    toggleClass: { className: 'is-scrolled', targets: '.header' },
+  });
+
+  gsap.from('.about__cta', {
+    xPercent: -300,
+    duration: 1,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '.about__cta',
+      start: 'top 70%',
+    },
+  });
+
+  gsap.from('.recipes__cta', {
+    xPercent: 600,
+    duration: 1,
+    ease: 'power3.out',
+    scrollTrigger: {
+      trigger: '.recipes__cta',
+      start: 'top 70%',
+    },
+  });
+
+  const revealHeadings = gsap.utils.toArray([
+    '.about__title',
+    '.mouthfeel__title',
+    '.availability__title',
+    '.recipes__title',
+  ]);
+
+  revealHeadings.forEach((el) => {
+    gsap.fromTo(
+      el,
       { y: 40, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8, ease: 'power3.out', scrollTrigger: { trigger: heading, start: 'top 85%' } }
+      {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: 'power3.out',
+        scrollTrigger: { trigger: el, start: 'top 85%' },
+      }
     );
   });
 
-  gsap.fromTo('.feature-card',
+  gsap.fromTo(
+    '.feature-card',
     { y: 60, opacity: 0 },
-    { y: 0, opacity: 1, duration: 0.8, stagger: 0.15, ease: 'power3.out', scrollTrigger: { trigger: '.about__features', start: 'top 80%' } }
+    {
+      y: 0,
+      opacity: 1,
+      duration: 0.8,
+      stagger: 0.15,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: '.about__features', start: 'top 80%' },
+    }
   );
 
-  gsap.fromTo('.flavor-card',
+  gsap.fromTo(
+    '.flavor-card',
     { y: 80, opacity: 0 },
-    { y: 0, opacity: 1, duration: 1, stagger: 0.2, ease: 'power3.out', scrollTrigger: { trigger: '.flavors', start: 'top 75%' } }
+    {
+      y: 0,
+      opacity: 1,
+      duration: 1,
+      stagger: 0.2,
+      ease: 'power3.out',
+      scrollTrigger: { trigger: '.flavors', start: 'top 75%' },
+    }
   );
 
-  gsap.fromTo('.product-item',
+  gsap.fromTo(
+    '.product-item',
     { y: 50, opacity: 0, scale: 0.9 },
-    { y: 0, opacity: 1, scale: 1, duration: 0.6, stagger: 0.1, ease: 'back.out(1.7)', scrollTrigger: { trigger: '.availability__grid', start: 'top 80%' } }
+    {
+      y: 0,
+      opacity: 1,
+      scale: 1,
+      duration: 0.6,
+      stagger: 0.1,
+      ease: 'back.out(1.7)',
+      scrollTrigger: { trigger: '.availability__grid', start: 'top 80%' },
+    }
   );
+
+  ScrollTrigger.refresh();
+  window.addEventListener('load', () => ScrollTrigger.refresh());
 };

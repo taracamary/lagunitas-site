@@ -1,0 +1,162 @@
+{
+  "extends": ["stylelint-config-standard-scss"],
+  "plugins": ["stylelint-order"],
+  "ignoreFiles": ["dist/**", "node_modules/**", "style.css", "script.js"],
+  "rules": {
+    "no-empty-source": null,
+    "property-no-vendor-prefix": null,
+    "custom-property-empty-line-before": null,
+    "property-no-deprecated": [
+      true,
+      {
+        "ignoreProperties": ["clip"]
+      }
+    ],
+    "selector-class-pattern": "^(?:[a-z][a-z0-9]*(-[a-z0-9]+)*(__[a-z0-9]+(-[a-z0-9]+)*)?(--[a-z0-9]+(-[a-z0-9]+)*)?|visually-hidden|u-[a-z0-9]+(-[a-z0-9]+)*)$",
+    "selector-id-pattern": null,
+    "max-nesting-depth": [
+      3,
+      {
+        "ignore": ["blockless-at-rules", "pseudo-classes"]
+      }
+    ],
+    "selector-pseudo-class-no-unknown": [
+      true,
+      {
+        "ignorePseudoClasses": ["has", "global", "local"]
+      }
+    ],
+    "selector-pseudo-element-no-unknown": [
+      true,
+      {
+        "ignorePseudoElements": ["webkit-background-clip", "webkit-text-fill-color"]
+      }
+    ],
+    "property-no-unknown": [
+      true,
+      {
+        "ignoreProperties": [
+          "container-type",
+          "container-name",
+          "text-wrap",
+          "hanging-punctuation",
+          "text-size-adjust"
+        ]
+      }
+    ],
+    "at-rule-no-unknown": null,
+    "scss/at-rule-no-unknown": true,
+    "scss/dollar-variable-pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$",
+    "scss/percent-placeholder-pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$",
+    "scss/at-extend-no-missing-placeholder": null,
+    "declaration-empty-line-before": null,
+    "custom-property-pattern": "^[a-z][a-z0-9]*(?:-[a-z0-9]+)*$",
+    "order/order": ["custom-properties", "dollar-variables", "declarations", "rules", "at-rules"],
+    "order/properties-order": [
+      [
+        "position",
+        "inset",
+        "inset-block",
+        "inset-inline",
+        "top",
+        "right",
+        "bottom",
+        "left",
+        "z-index",
+        "display",
+        "flex",
+        "flex-direction",
+        "flex-wrap",
+        "flex-flow",
+        "flex-grow",
+        "flex-shrink",
+        "flex-basis",
+        "grid",
+        "grid-template",
+        "grid-template-columns",
+        "grid-template-rows",
+        "grid-template-areas",
+        "grid-auto-columns",
+        "grid-auto-rows",
+        "grid-auto-flow",
+        "grid-area",
+        "grid-column",
+        "grid-row",
+        "gap",
+        "row-gap",
+        "column-gap",
+        "place-content",
+        "place-items",
+        "place-self",
+        "align-content",
+        "align-items",
+        "align-self",
+        "justify-content",
+        "justify-items",
+        "justify-self",
+        "order",
+        "container-type",
+        "container-name",
+        "width",
+        "min-width",
+        "max-width",
+        "height",
+        "min-height",
+        "max-height",
+        "margin",
+        "margin-block",
+        "margin-inline",
+        "margin-top",
+        "margin-right",
+        "margin-bottom",
+        "margin-left",
+        "padding",
+        "padding-block",
+        "padding-inline",
+        "padding-top",
+        "padding-right",
+        "padding-bottom",
+        "padding-left",
+        "overflow",
+        "overflow-x",
+        "overflow-y",
+        "clip",
+        "font",
+        "font-family",
+        "font-size",
+        "font-weight",
+        "font-style",
+        "line-height",
+        "letter-spacing",
+        "text-align",
+        "text-transform",
+        "text-decoration",
+        "text-wrap",
+        "word-spacing",
+        "white-space",
+        "color",
+        "background",
+        "background-color",
+        "background-image",
+        "background-position",
+        "background-size",
+        "background-repeat",
+        "background-clip",
+        "border",
+        "border-radius",
+        "box-shadow",
+        "opacity",
+        "transform",
+        "transition",
+        "animation",
+        "cursor",
+        "pointer-events",
+        "will-change"
+      ],
+      {
+        "unspecified": "bottomAlphabetical",
+        "emptyLineBeforeUnspecified": "never"
+      }
+    ]
+  }
+}

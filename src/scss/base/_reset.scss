@@ -1,43 +1,33 @@
-/* ==========================================================================
-   MODERN CSS RESET (2026 Standard)
-   ========================================================================== */
-
-/* 1. Box sizing rules */
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* 2. Remove default margin and padding */
 * {
   margin: 0;
   padding: 0;
 }
 
-/* 3. Prevent font size inflation and set core body defaults */
 html {
+  font-size: 16px; /* Base size for rem */
   -moz-text-size-adjust: none;
   -webkit-text-size-adjust: none;
   text-size-adjust: none;
-  font-size: 16px; /* Base size for rem */
-  /* Убрали scroll-behavior: smooth, так как он конфликтует с Lenis и вызывает вязкость */
 }
 
-/* 4. Body setup */
 body {
   min-height: 100vh;
+  overflow-x: hidden;
+  font-family: var(--font-text);
   line-height: 1.5;
+  color: var(--color-text-main);
+  background-color: var(--color-bg-main);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  text-rendering: optimizeLegibility;
-  background-color: var(--color-bg-main);
-  color: var(--color-text-main);
-  font-family: var(--font-text);
-  overflow-x: hidden; /* Prevent horizontal scroll */
+  text-rendering: optimizelegibility;
 }
 
-/* 5. Improve media defaults */
 img,
 picture,
 video,
@@ -46,28 +36,25 @@ svg {
   display: block;
   max-width: 100%;
   height: auto;
-  object-fit: cover; /* Prevent image distortion */
+  object-fit: cover;
 }
 
-/* 6. Remove built-in form typography styles */
 input,
 button,
 textarea,
 select {
   font: inherit;
-  color: inherit;
   letter-spacing: inherit;
+  color: inherit;
 }
 
-/* 7. Button reset */
 button {
+  padding: 0;
   background: none;
   border: none;
-  padding: 0;
   cursor: pointer;
 }
 
-/* 8. Avoid text overflows */
 p,
 h1,
 h2,
@@ -75,46 +62,44 @@ h3,
 h4,
 h5,
 h6 {
-  overflow-wrap: break-word;
   hyphens: auto;
+  overflow-wrap: break-word;
 }
 
-/* 9. Create a root stacking context */
 #root,
 #__next,
 .main-content {
   isolation: isolate;
 }
 
-/* 10. A11y: Remove animations for people who prefer not to see them */
 @media (prefers-reduced-motion: reduce) {
   html:focus-within {
     scroll-behavior: auto;
   }
-  
+
   *,
   *::before,
   *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
-    transition-duration: 0.01ms !important;
     scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
   }
 }
 
-/* 11. Focus states for a11y (Keyboard navigation) */
 :focus-visible {
   outline: 2px solid var(--color-primary);
   outline-offset: 4px;
 }
 
-/* Hide scrollbar for a cleaner look (optional, but requested in original design) */
 ::-webkit-scrollbar {
   width: 8px;
 }
+
 ::-webkit-scrollbar-track {
   background: var(--color-bg-main);
 }
+
 ::-webkit-scrollbar-thumb {
   background: var(--color-text-muted);
   border-radius: 4px;

@@ -1,33 +1,26 @@
-/* ==========================================================================
-   MOUTHFEEL SECTION (.mouthfeel)
-   ========================================================================== */
-
 .mouthfeel {
   &__title {
+    margin-bottom: var(--space-xl);
     font-size: var(--text-hero);
     line-height: 0.9;
     text-align: center;
-    margin-bottom: var(--space-xl);
-    
-    /* Texture effect */
+    background-color: var(--color-primary);
     background-image: url('../../img/texture.png');
     background-position: center;
     background-size: cover;
     background-repeat: no-repeat;
     -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-color: var(--color-primary); /* Fallback */
   }
 
   &__content {
     display: grid;
-    gap: var(--space-xl);
     grid-template-columns: 1fr;
+    gap: var(--space-xl);
 
-    @media (min-width: 992px) {
+    @media (width >= 992px) {
       grid-template-columns: 1fr 1fr;
-      align-items: flex-start;
       gap: var(--space-section);
+      align-items: flex-start;
     }
   }
 
@@ -39,10 +32,10 @@
 
   &__video-link {
     display: block;
-    border-radius: 8px;
     overflow: hidden;
+    border-radius: 8px;
     transition: transform var(--transition-fast);
-    
+
     &:hover {
       transform: scale(1.02);
     }
@@ -67,15 +60,15 @@
   }
 
   &__lead {
+    margin-bottom: var(--space-lg);
     font-size: var(--text-lg);
     font-weight: 600;
-    margin-bottom: var(--space-lg);
   }
 
   &__subtitle {
+    margin-bottom: var(--space-sm);
     font-size: var(--text-xl);
     letter-spacing: 0.05em;
-    margin-bottom: var(--space-sm);
   }
 
   &__desc {

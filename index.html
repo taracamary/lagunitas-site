@@ -1,230 +1,289 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Lagunitas | Technical Mickey</title>
-    
-    <!-- Fonts -->
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script&family=Dosis:wght@200;400;600&display=swap" rel="stylesheet">
-    
-    <!-- Icons -->
-    <link href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css" rel="stylesheet">
-    
-    <!-- Smooth Scroll (Lenis CSS) -->
-    <link rel="stylesheet" href="https://unpkg.com/lenis@1.0.45/dist/lenis.css">
-    
-    <!-- Стили теперь подключаются через Vite в main.js -->
-</head>
-<body>
 
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Anton&family=Dancing+Script&family=Dosis:wght@200;400;600&display=swap"
+      rel="stylesheet"
+    />
+
+    <!-- Icons -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
+      rel="stylesheet"
+    />
+
+    <!-- Smooth Scroll (Lenis CSS) -->
+    <link rel="stylesheet" href="https://unpkg.com/lenis@1.0.45/dist/lenis.css" />
+
+    <!-- Стили теперь подключаются через Vite в main.js -->
+  </head>
+  <body>
     <!-- Top Navigation -->
     <header class="header">
-        <a href="/" class="header__logo-link" aria-label="Go to homepage">
-            <img src="img/lagunitas-logo.png" alt="Lagunitas Brewing Company Logo" class="header__logo">
-        </a>
-        <button class="btn btn--primary header__cta">Buy Beer</button>
-        <button class="header__menu-toggle" aria-label="Open menu" aria-expanded="false">
-            <i class="ri-menu-line" aria-hidden="true"></i>
-        </button>
+      <a href="/" class="header__logo-link" aria-label="Go to homepage">
+        <img
+          src="img/lagunitas-logo.png"
+          alt="Lagunitas Brewing Company Logo"
+          class="header__logo"
+        />
+      </a>
+      <button class="btn btn--primary header__cta">Buy Beer</button>
+      <button class="header__menu-toggle" aria-label="Open menu" aria-expanded="false">
+        <i class="ri-menu-line" aria-hidden="true"></i>
+      </button>
     </header>
 
     <!-- Left Sidebar Navigation -->
     <nav class="sidebar">
-        <button class="sidebar__btn" aria-label="Menu">
-            <i class="ri-menu-line" aria-hidden="true"></i>
-        </button>
-        <button class="sidebar__btn" aria-label="Search">
-            <i class="ri-search-line" aria-hidden="true"></i>
-        </button>
+      <button class="sidebar__btn" aria-label="Menu">
+        <i class="ri-menu-line" aria-hidden="true"></i>
+      </button>
+      <button class="sidebar__btn" aria-label="Search">
+        <i class="ri-search-line" aria-hidden="true"></i>
+      </button>
     </nav>
 
     <!-- Main Content Wrapper -->
     <main class="main-content" id="js-main-scroll">
-        
-        <!-- Global Parallax Bottle -->
-        <img src="./img/ipa.png" alt="Lagunitas IPA Bottle" class="global-bottle" id="js-hero-bottle">
+      <!-- Global Parallax Bottle -->
+      <img
+        src="./img/ipa.png"
+        alt="Lagunitas IPA Bottle"
+        class="global-bottle"
+        id="js-hero-bottle"
+      />
 
-        <!-- Section 1: Hero -->
-        <section class="hero">
-            <h1 class="hero__title">Unlimited Release</h1>
-            <img src="./img/dogimage.png" alt="Lagunitas Dog Mascot" class="hero__mascot" id="js-hero-mascot">
-        </section>
+      <!-- Section 1: Hero -->
+      <section class="hero">
+        <h1 class="hero__title">Unlimited Release</h1>
+        <img
+          src="./img/dogimage.png"
+          alt="Lagunitas Dog Mascot"
+          class="hero__mascot"
+          id="js-hero-mascot"
+        />
+      </section>
 
-        <!-- Section 2: About IPA -->
-        <section class="about">
-            <div class="about__content">
-                <span class="about__subtitle">Unlimited Release</span>
-                <h2 class="about__title">India Pale Ale</h2>
-                <p class="about__text">
-                    Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias, 
-                    officia error? Totam unde nulla ea repudiandae, corporis optio recusandae 
-                    repellat asperiores minima voluptate soluta laboriosam debitis architecto 
-                    quaerat fugiat nostrum aliquam. Minima ratione sequi omnis ipsa beatae ab odio 
-                    id ad, voluptates fuga incidunt nisi.
-                </p>
-                <button class="btn btn--dark about__cta">Buy Now!</button>
+      <!-- Section 2: About IPA -->
+      <section class="about">
+        <div class="about__content">
+          <span class="about__subtitle">Unlimited Release</span>
+          <h2 class="about__title">India Pale Ale</h2>
+          <p class="about__text">
+            Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias, officia error? Totam
+            unde nulla ea repudiandae, corporis optio recusandae repellat asperiores minima
+            voluptate soluta laboriosam debitis architecto quaerat fugiat nostrum aliquam. Minima
+            ratione sequi omnis ipsa beatae ab odio id ad, voluptates fuga incidunt nisi.
+          </p>
+          <button class="btn btn--dark about__cta">Buy Now!</button>
+        </div>
+
+        <div class="about__features">
+          <!-- Feature Card: ABV -->
+          <article class="feature-card">
+            <header class="feature-card__header">
+              <h3 class="feature-card__title">ABV</h3>
+              <p class="feature-card__subtitle">Alcohol by volume</p>
+            </header>
+            <div class="feature-card__body">
+              <span class="feature-card__value">6.2<span class="feature-card__unit">%</span></span>
+              <p class="feature-card__desc">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis mollitia corporis
+                facere.
+              </p>
             </div>
-            
-            <div class="about__features">
-                <!-- Feature Card: ABV -->
-                <article class="feature-card">
-                    <header class="feature-card__header">
-                        <h3 class="feature-card__title">ABV</h3>
-                        <p class="feature-card__subtitle">Alcohol by volume</p>
-                    </header>
-                    <div class="feature-card__body">
-                        <span class="feature-card__value">6.2<span class="feature-card__unit">%</span></span>
-                        <p class="feature-card__desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis mollitia corporis facere.
-                        </p>
-                    </div>
-                </article>
+          </article>
 
-                <!-- Feature Card: IBU -->
-                <article class="feature-card">
-                    <header class="feature-card__header">
-                        <h3 class="feature-card__title">IBU</h3>
-                        <p class="feature-card__subtitle">International Bitterness Units</p>
-                    </header>
-                    <div class="feature-card__body">
-                        <span class="feature-card__value">51<span class="feature-card__unit">.1</span></span>
-                        <p class="feature-card__desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis mollitia corporis facere.
-                        </p>
-                    </div>
-                </article>
-                
-                <!-- Feature Card: O.G. (Original Gravity - replaced duplicate ABV) -->
-                <article class="feature-card">
-                    <header class="feature-card__header">
-                        <h3 class="feature-card__title">O.G.</h3>
-                        <p class="feature-card__subtitle">Original Gravity</p>
-                    </header>
-                    <div class="feature-card__body">
-                        <span class="feature-card__value">1.05<span class="feature-card__unit"></span></span>
-                        <p class="feature-card__desc">
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis mollitia corporis facere.
-                        </p>
-                    </div>
-                </article>
+          <!-- Feature Card: IBU -->
+          <article class="feature-card">
+            <header class="feature-card__header">
+              <h3 class="feature-card__title">IBU</h3>
+              <p class="feature-card__subtitle">International Bitterness Units</p>
+            </header>
+            <div class="feature-card__body">
+              <span class="feature-card__value">51<span class="feature-card__unit">.1</span></span>
+              <p class="feature-card__desc">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis mollitia corporis
+                facere.
+              </p>
             </div>
-        </section>
+          </article>
 
-        <!-- Section 3: Mouthfeel -->
-        <section class="mouthfeel">
-            <h2 class="mouthfeel__title">Mouthfeel</h2>
-            <div class="mouthfeel__content">
-                <div class="mouthfeel__video-block">
-                    <a href="#" class="mouthfeel__video-link" aria-label="Watch video from Jeremy Marshall">
-                        <img src="img/youtube_imgae.jpg" alt="Video thumbnail" class="mouthfeel__video-thumb">
-                    </a>
-                    <p class="mouthfeel__video-caption">Hear it from our brewmonster Jeremy Marshall</p>
-                </div>
-                <div class="mouthfeel__text-block">
-                    <p class="mouthfeel__lead">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi officiis omnis fuga ipsum, molestias voluptates rem vitae perferendis.</p>
-                    <h3 class="mouthfeel__subtitle">Style</h3>
-                    <p class="mouthfeel__desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur est quaerat cumque veritatis, non nisi voluptatibus et veniam, excepturi illo neque!</p>
-                    <p class="mouthfeel__desc">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur est quaerat cumque veritatis, non nisi voluptatibus et veniam.</p>
-                </div>
+          <!-- Feature Card: O.G. (Original Gravity - replaced duplicate ABV) -->
+          <article class="feature-card">
+            <header class="feature-card__header">
+              <h3 class="feature-card__title">O.G.</h3>
+              <p class="feature-card__subtitle">Original Gravity</p>
+            </header>
+            <div class="feature-card__body">
+              <span class="feature-card__value">1.05<span class="feature-card__unit"></span></span>
+              <p class="feature-card__desc">
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis mollitia corporis
+                facere.
+              </p>
             </div>
-        </section>
+          </article>
+        </div>
+      </section>
 
-        <!-- Section 4: Flavors -->
-        <section class="flavors">
-            <!-- Flavor Card 1 -->
-            <article class="flavor-card flavor-card--tropical">
-                <img src="img/Green-LSS.png" alt="Green Splash Background" class="flavor-card__bg">
-                <div class="flavor-card__content">
-                    <h3 class="flavor-card__title">Tropical</h3>
-                    <p class="flavor-card__desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia harum accusamus placeat distinctio.</p>
-                </div>
-            </article>
+      <!-- Section 3: Mouthfeel -->
+      <section class="mouthfeel">
+        <h2 class="mouthfeel__title">Mouthfeel</h2>
+        <div class="mouthfeel__content">
+          <div class="mouthfeel__video-block">
+            <a href="#" class="mouthfeel__video-link" aria-label="Watch video from Jeremy Marshall">
+              <img
+                src="img/youtube_imgae.jpg"
+                alt="Video thumbnail"
+                class="mouthfeel__video-thumb"
+              />
+            </a>
+            <p class="mouthfeel__video-caption">Hear it from our brewmonster Jeremy Marshall</p>
+          </div>
+          <div class="mouthfeel__text-block">
+            <p class="mouthfeel__lead">
+              Lorem ipsum dolor sit amet consectetur, adipisicing elit. Commodi officiis omnis fuga
+              ipsum, molestias voluptates rem vitae perferendis.
+            </p>
+            <h3 class="mouthfeel__subtitle">Style</h3>
+            <p class="mouthfeel__desc">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur est quaerat
+              cumque veritatis, non nisi voluptatibus et veniam, excepturi illo neque!
+            </p>
+            <p class="mouthfeel__desc">
+              Lorem, ipsum dolor sit amet consectetur adipisicing elit. Aspernatur est quaerat
+              cumque veritatis, non nisi voluptatibus et veniam.
+            </p>
+          </div>
+        </div>
+      </section>
 
-            <!-- Flavor Card 2 -->
-            <article class="flavor-card flavor-card--pink">
-                <img src="img/Green-LSS.png" alt="Pink Splash Background" class="flavor-card__bg">
-                <div class="flavor-card__content">
-                    <h3 class="flavor-card__title">Pink</h3>
-                    <p class="flavor-card__desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia harum accusamus placeat distinctio.</p>
-                </div>
-            </article>
+      <!-- Section 4: Flavors -->
+      <section class="flavors">
+        <!-- Flavor Card 1 -->
+        <article class="flavor-card flavor-card--tropical">
+          <img src="img/Green-LSS.png" alt="Green Splash Background" class="flavor-card__bg" />
+          <div class="flavor-card__content">
+            <h3 class="flavor-card__title">Tropical</h3>
+            <p class="flavor-card__desc">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia harum accusamus placeat
+              distinctio.
+            </p>
+          </div>
+        </article>
 
-            <!-- Flavor Card 3 -->
-            <article class="flavor-card flavor-card--caramel">
-                <img src="img/splat-black.png" alt="Black Splash Background" class="flavor-card__bg">
-                <div class="flavor-card__content">
-                    <h3 class="flavor-card__title">Caramel-Malt</h3>
-                    <p class="flavor-card__desc">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia harum accusamus placeat distinctio.</p>
-                </div>
-            </article>
+        <!-- Flavor Card 2 -->
+        <article class="flavor-card flavor-card--pink">
+          <img src="img/Green-LSS.png" alt="Pink Splash Background" class="flavor-card__bg" />
+          <div class="flavor-card__content">
+            <h3 class="flavor-card__title">Pink</h3>
+            <p class="flavor-card__desc">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia harum accusamus placeat
+              distinctio.
+            </p>
+          </div>
+        </article>
 
-            <img src="./img/LittleSumpin_MasonJar_Photo-671x1024.png" alt="Little Sumpin Mason Jar" class="flavors__jar-img" id="js-flavor-jar">
-        </section>
+        <!-- Flavor Card 3 -->
+        <article class="flavor-card flavor-card--caramel">
+          <img src="img/splat-black.png" alt="Black Splash Background" class="flavor-card__bg" />
+          <div class="flavor-card__content">
+            <h3 class="flavor-card__title">Caramel-Malt</h3>
+            <p class="flavor-card__desc">
+              Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quia harum accusamus placeat
+              distinctio.
+            </p>
+          </div>
+        </article>
 
-        <!-- Section 5: Availability -->
-        <section class="availability">
-            <span class="availability__subtitle">Availability</span>
-            <h2 class="availability__title">Year Round</h2>
-            
-            <div class="availability__grid">
-                <!-- Product Item -->
-                <article class="product-item">
-                    <img src="img/image1.png" alt="Lagunitas On Tap" class="product-item__img">
-                    <h3 class="product-item__title">On Tap</h3>
-                </article>
+        <img
+          src="./img/LittleSumpin_MasonJar_Photo-671x1024.png"
+          alt="Little Sumpin Mason Jar"
+          class="flavors__jar-img"
+          id="js-flavor-jar"
+        />
+      </section>
 
-                <!-- Product Item -->
-                <article class="product-item">
-                    <img src="img/image2.png" alt="Lagunitas 12 oz Bottles" class="product-item__img">
-                    <h3 class="product-item__title">12 oz Bottles</h3>
-                    <span class="product-item__pack">6-PACK</span>
-                </article>
+      <!-- Section 5: Availability -->
+      <section class="availability">
+        <span class="availability__subtitle">Availability</span>
+        <h2 class="availability__title">Year Round</h2>
 
-                <!-- Product Item -->
-                <article class="product-item">
-                    <img src="img/ipa.png" alt="Lagunitas 19.2 oz Cans" class="product-item__img">
-                    <h3 class="product-item__title">19.2 oz Cans</h3>
-                    <span class="product-item__pack">SINGLE</span>
-                </article>
+        <div class="availability__grid">
+          <!-- Product Item -->
+          <article class="product-item">
+            <img src="img/image1.png" alt="Lagunitas On Tap" class="product-item__img" />
+            <h3 class="product-item__title">On Tap</h3>
+          </article>
 
-                <!-- Product Item -->
-                <article class="product-item">
-                    <img src="img/image3.png" alt="Lagunitas 22 oz Bottles" class="product-item__img">
-                    <h3 class="product-item__title">22 oz Bottles</h3>
-                </article>
+          <!-- Product Item -->
+          <article class="product-item">
+            <img src="img/image2.png" alt="Lagunitas 12 oz Bottles" class="product-item__img" />
+            <h3 class="product-item__title">12 oz Bottles</h3>
+            <span class="product-item__pack">6-PACK</span>
+          </article>
 
-                <!-- Product Item -->
-                <article class="product-item">
-                    <img src="img/image4.png" alt="Lagunitas 32 oz Bottles" class="product-item__img">
-                    <h3 class="product-item__title">32 oz Bottles</h3>
-                </article>
-            </div>
-        </section>
+          <!-- Product Item (IPA — target for the global flying bottle) -->
+          <article class="product-item">
+            <img
+              src="img/ipa.png"
+              alt="Lagunitas 19.2 oz Cans"
+              class="product-item__img"
+              id="js-availability-bottle"
+            />
+            <h3 class="product-item__title">19.2 oz Cans</h3>
+            <span class="product-item__pack">SINGLE</span>
+          </article>
 
-        <!-- Section 6: Recipes / Banner -->
-        <section class="recipes">
-            <div class="recipes__image-wrapper">
-                <img src="./img/DTH_ProgramBanner.jpg" alt="Lagunitas Food and Beer Pairing" class="recipes__img">
-            </div>
-            <div class="recipes__content">
-                <span class="recipes__subtitle">Recipes</span>
-                <h2 class="recipes__title">Beer Speaks. Bellies Grumble.</h2>
-                <p class="recipes__text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum maiores saepe, ex magnam temporibus repellendus nobis doloremque voluptates quis ad fugit rem similique, porro, neque voluptate numquam quae? Repudiandae, ratione!</p>
-                <button class="btn btn--dark recipes__cta">Read More</button>
-            </div>
-        </section>
+          <!-- Product Item -->
+          <article class="product-item">
+            <img src="img/image3.png" alt="Lagunitas 22 oz Bottles" class="product-item__img" />
+            <h3 class="product-item__title">22 oz Bottles</h3>
+          </article>
 
+          <!-- Product Item -->
+          <article class="product-item">
+            <img src="img/image4.png" alt="Lagunitas 32 oz Bottles" class="product-item__img" />
+            <h3 class="product-item__title">32 oz Bottles</h3>
+          </article>
+        </div>
+      </section>
+
+      <!-- Section 6: Recipes / Banner -->
+      <section class="recipes">
+        <div class="recipes__image-wrapper">
+          <img
+            src="./img/DTH_ProgramBanner.jpg"
+            alt="Lagunitas Food and Beer Pairing"
+            class="recipes__img"
+          />
+        </div>
+        <div class="recipes__content">
+          <span class="recipes__subtitle">Recipes</span>
+          <h2 class="recipes__title">Beer Speaks. Bellies Grumble.</h2>
+          <p class="recipes__text">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Eum maiores saepe, ex magnam
+            temporibus repellendus nobis doloremque voluptates quis ad fugit rem similique, porro,
+            neque voluptate numquam quae? Repudiandae, ratione!
+          </p>
+          <button class="btn btn--dark recipes__cta">Read More</button>
+        </div>
+      </section>
     </main>
 
     <!-- Scripts -->
     <script src="https://unpkg.com/lenis@1.0.45/dist/lenis.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    
+
     <!-- Точка входа Vite -->
     <script type="module" src="/src/js/main.js"></script>
-</body>
+  </body>
 </html>

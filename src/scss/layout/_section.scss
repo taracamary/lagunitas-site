@@ -1,41 +1,31 @@
-/* ==========================================================================
-   SECTION & GLOBAL LAYOUT
-   ========================================================================== */
-
-/* Main wrapper */
 .main-content {
   position: relative;
   width: 100%;
   min-height: 100vh;
-  /* On desktop, we offset the main content to make room for the fixed sidebar */
-  @media (min-width: 768px) {
+
+  @media (width >= 768px) {
     padding-left: var(--sidebar-width);
   }
 }
 
-/* Base section styles */
 section {
   position: relative;
-  width: 100%;
-  padding: var(--space-section) var(--container-padding);
   display: flex;
   flex-direction: column;
-  
-  /* Optional: max-width constraint for ultra-wide screens */
-  margin: 0 auto;
+  width: 100%;
   max-width: var(--container-width);
+  margin: 0 auto;
+  padding: var(--space-section) var(--container-padding);
 }
 
-/* Global Bottle (The one that animates across sections) */
 .global-bottle {
-  position: fixed; /* Изменено на fixed для покадровой анимации по всем секциям */
+  position: fixed;
   top: 5vh;
   left: 50%;
-  /* transform: translateX(-50%); - Убрали хардкод, теперь GSAP управляет центрированием через xPercent */
-  height: clamp(40vh, 70vh, 800px); /* Чуть уменьшили базовую высоту для лучшего фита */
-  width: auto;
-  object-fit: contain;
   z-index: var(--z-bottle);
-  pointer-events: none; /* Чтобы не перекрывать клики по контенту */
-  will-change: transform; /* Подсказка для композитора браузера */
+  width: auto;
+  height: clamp(40vh, 70vh, 800px);
+  pointer-events: none;
+  will-change: transform;
+  object-fit: contain;
 }

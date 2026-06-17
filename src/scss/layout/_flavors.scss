@@ -1,28 +1,19 @@
-/* ==========================================================================
-   FLAVORS SECTION (.flavors)
-   ========================================================================== */
-
 .flavors {
   position: relative;
   display: grid;
-  gap: var(--space-xl);
   grid-template-columns: 1fr;
-  
-  /* Make room for the jar on desktop */
-  @media (min-width: 992px) {
-    grid-template-columns: repeat(3, 1fr);
-    padding-bottom: 20vh; /* Extra space for the floating jar */
-  }
+  gap: var(--space-xl);
 
-  /* Specific positioning for flavor cards to create a staggered look on desktop */
   .flavor-card {
-    @media (min-width: 992px) {
+    @media (width >= 992px) {
       &--tropical {
         transform: translateY(0);
       }
+
       &--pink {
         transform: translateY(20%);
       }
+
       &--caramel {
         transform: translateY(10%);
       }
@@ -30,17 +21,22 @@
   }
 
   &__jar-img {
-    display: none; /* Hide on mobile to save space */
-    
-    @media (min-width: 992px) {
-      display: block;
+    display: none;
+
+    @media (width >= 992px) {
       position: absolute;
-      bottom: -10%;
       right: 10%;
+      bottom: -10%;
+      z-index: var(--z-content);
+      display: block;
       width: clamp(200px, 20vw, 300px);
       transform: rotate(-15deg);
-      z-index: var(--z-content);
-      filter: drop-shadow(10px 20px 30px rgba(0,0,0,0.3));
+      filter: drop-shadow(10px 20px 30px rgb(0 0 0 / 30%));
     }
+  }
+
+  @media (width >= 992px) {
+    grid-template-columns: repeat(3, 1fr);
+    padding-bottom: 20vh;
   }
 }

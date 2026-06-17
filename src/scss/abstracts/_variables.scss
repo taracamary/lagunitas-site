@@ -1,45 +1,40 @@
 :root {
-  /* ==========================================================================
-     DESIGN TOKENS (CSS Variables)
-     ========================================================================== */
+  /* 1. Colors */
+  --color-primary: #c71d1d;
+  --color-primary-dark: #990d0d;
+  --color-primary-light: #b11d1d;
 
-  /* 1. Colors (Цветовая палитра) */
-  --color-primary: #c71d1d; /* Основной красный (кнопки, акценты) */
-  --color-primary-dark: #990d0d; /* Темно-красный (ховеры, фоны) */
-  --color-primary-light: #b11d1d; /* Светло-красный */
-  
-  --color-bg-main: #ffffff; /* Основной фон */
-  --color-bg-dark: #000000; /* Темный фон (кнопки, секции) */
-  
-  --color-text-main: #111111; /* Основной текст */
-  --color-text-muted: #666666; /* Второстепенный текст */
-  --color-text-inverse: #ffffff; /* Текст на темном фоне */
-  
-  --color-border: #000000; /* Цвет рамок */
+  --color-bg-main: #fff;
+  --color-bg-dark: #000;
 
-  /* 2. Typography (Шрифты) */
-  --font-primary: 'Anton', sans-serif; /* Заголовки, акценты */
-  --font-secondary: 'Dosis', sans-serif; /* Подзаголовки, легкий текст */
-  --font-text: 'Gilroy', system-ui, -apple-system, sans-serif; /* Основной текст */
-  --font-accent: 'Dancing Script', cursive; /* Декоративный текст */
+  --color-text-main: #111;
+  --color-text-muted: #666;
+  --color-text-inverse: #fff;
 
-  /* 3. Fluid Typography (Резиновая типографика через clamp) 
-     Формула: clamp(min_size, viewport_width_calc, max_size) */
+  --color-border: #000;
+
+  /* 2. Typography */
+  --font-primary: 'Anton', sans-serif;
+  --font-secondary: 'Dosis', sans-serif;
+  --font-text: 'Gilroy', system-ui, -apple-system, sans-serif;
+  --font-accent: 'Dancing Script', cursive;
+
+  /* 3. Fluid Typography. Formule: clamp(min_size, viewport_width_calc, max_size) */
   --text-xs: clamp(0.625rem, 0.8vw, 0.8125rem); /* 10px - 13px */
-  --text-sm: clamp(0.8125rem, 1vw, 0.9375rem);  /* 13px - 15px */
-  --text-base: clamp(1rem, 1.2vw, 1.125rem);    /* 16px - 18px */
-  --text-lg: clamp(1.25rem, 1.5vw, 1.5rem);     /* 20px - 24px */
-  --text-xl: clamp(1.5rem, 2vw, 2rem);          /* 24px - 32px */
-  --text-2xl: clamp(2rem, 4vw, 4rem);           /* 32px - 64px */
-  --text-hero: clamp(4rem, 13vw, 15rem);        /* Огромные заголовки */
-  
-  /* 4. Fluid Spacing (Резиновые отступы) */
+  --text-sm: clamp(0.8125rem, 1vw, 0.9375rem); /* 13px - 15px */
+  --text-base: clamp(1rem, 1.2vw, 1.125rem); /* 16px - 18px */
+  --text-lg: clamp(1.25rem, 1.5vw, 1.5rem); /* 20px - 24px */
+  --text-xl: clamp(1.5rem, 2vw, 2rem); /* 24px - 32px */
+  --text-2xl: clamp(2rem, 4vw, 4rem); /* 32px - 64px */
+  --text-hero: clamp(4rem, 13vw, 15rem); /* Large title */
+
+  /* 4. Fluid Spacing */
   --space-xs: clamp(0.25rem, 0.5vw, 0.5rem);
   --space-sm: clamp(0.5rem, 1vw, 1rem);
   --space-md: clamp(1rem, 2vw, 2rem);
   --space-lg: clamp(2rem, 4vw, 4rem);
   --space-xl: clamp(4rem, 8vw, 8rem);
-  --space-section: clamp(4rem, 10vw, 12rem); /* Отступы между секциями */
+  --space-section: clamp(4rem, 10vw, 12rem);
 
   /* 5. Layout & Grid */
   --container-width: 1440px;
@@ -47,11 +42,11 @@
   --header-height: clamp(60px, 10vh, 100px);
   --sidebar-width: clamp(60px, 5vw, 80px);
 
-  /* 6. Z-index System (Слои) */
+  /* 6. Z-index System */
   --z-negative: -1;
   --z-base: 1;
   --z-content: 10;
-  --z-bottle: 50; /* Главная бутылка, летящая поверх контента */
+  --z-bottle: 50;
   --z-header: 100;
   --z-sidebar: 110;
   --z-modal: 1000;
