@@ -62,6 +62,10 @@
   background-color: var(--color-bg-main);
   border-right: 2px solid var(--color-border);
 
+  &.is-open {
+    display: flex;
+  }
+
   &__btn {
     font-size: var(--text-xl);
     color: var(--color-text-main);

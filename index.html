@@ -28,20 +28,26 @@
           class="header__logo"
         />
       </a>
-      <button class="btn btn--primary header__cta">Buy Beer</button>
-      <button class="header__menu-toggle" aria-label="Open menu" aria-expanded="false">
+      <a href="#availability" class="btn btn--primary header__cta">Buy Beer</a>
+      <button
+        class="header__menu-toggle"
+        type="button"
+        aria-label="Open menu"
+        aria-controls="mobile-nav"
+        aria-expanded="false"
+      >
         <i class="ri-menu-line" aria-hidden="true"></i>
       </button>
     </header>
 
     <!-- Left Sidebar Navigation -->
-    <nav class="sidebar">
-      <button class="sidebar__btn" aria-label="Menu">
+    <nav class="sidebar" id="mobile-nav" aria-label="Primary navigation">
+      <a class="sidebar__btn" href="#about" aria-label="About IPA">
         <i class="ri-menu-line" aria-hidden="true"></i>
-      </button>
-      <button class="sidebar__btn" aria-label="Search">
+      </a>
+      <a class="sidebar__btn" href="#availability" aria-label="Beer availability">
         <i class="ri-search-line" aria-hidden="true"></i>
-      </button>
+      </a>
     </nav>
 
     <!-- Main Content Wrapper -->
@@ -66,7 +72,7 @@
       </section>
 
       <!-- Section 2: About IPA -->
-      <section class="section about">
+      <section class="section about" id="about">
         <div class="about__content">
           <span class="about__subtitle">Unlimited Release</span>
           <h2 class="about__title">India Pale Ale</h2>
@@ -76,7 +82,7 @@
             voluptate soluta laboriosam debitis architecto quaerat fugiat nostrum aliquam. Minima
             ratione sequi omnis ipsa beatae ab odio id ad, voluptates fuga incidunt nisi.
           </p>
-          <button class="btn btn--dark about__cta">Buy Now!</button>
+          <a href="#availability" class="btn btn--dark about__cta">Buy Now!</a>
         </div>
 
         <div class="about__features">
@@ -206,7 +212,7 @@
       </section>
 
       <!-- Section 5: Availability -->
-      <section class="section availability">
+      <section class="section availability" id="availability">
         <span class="availability__subtitle">Availability</span>
         <h2 class="availability__title">Year Round</h2>
 
@@ -251,7 +257,7 @@
       </section>
 
       <!-- Section 6: Recipes / Banner -->
-      <section class="section recipes">
+      <section class="section recipes" id="recipes">
         <div class="recipes__image-wrapper">
           <img
             src="./img/DTH_ProgramBanner.jpg"
@@ -267,7 +273,7 @@
             temporibus repellendus nobis doloremque voluptates quis ad fugit rem similique, porro,
             neque voluptate numquam quae? Repudiandae, ratione!
           </p>
-          <button class="btn btn--dark recipes__cta">Read More</button>
+          <a href="#recipes" class="btn btn--dark recipes__cta">Read More</a>
         </div>
       </section>
     </main>
