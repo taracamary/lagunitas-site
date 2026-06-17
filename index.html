@@ -16,7 +16,6 @@
       href="https://cdn.jsdelivr.net/npm/remixicon@2.2.0/fonts/remixicon.css"
       rel="stylesheet"
     />
-
   </head>
 
   <body>
@@ -56,7 +55,7 @@
       />
 
       <!-- Section 1: Hero -->
-      <section class="hero">
+      <section class="section hero">
         <h1 class="hero__title">Unlimited Release</h1>
         <img
           src="./img/dogimage.png"
@@ -67,7 +66,7 @@
       </section>
 
       <!-- Section 2: About IPA -->
-      <section class="about">
+      <section class="section about">
         <div class="about__content">
           <span class="about__subtitle">Unlimited Release</span>
           <h2 class="about__title">India Pale Ale</h2>
@@ -82,54 +81,54 @@
 
         <div class="about__features">
           <!-- Feature Card: ABV -->
-          <article class="feature-card">
-            <header class="feature-card__header">
-              <h3 class="feature-card__title">ABV</h3>
-              <p class="feature-card__subtitle">Alcohol by volume</p>
-            </header>
+          <dl class="feature-card">
+            <div class="feature-card__header">
+              <dt class="feature-card__title">ABV</dt>
+              <dd class="feature-card__subtitle">Alcohol by volume</dd>
+            </div>
             <div class="feature-card__body">
-              <span class="feature-card__value">6.2<span class="feature-card__unit">%</span></span>
-              <p class="feature-card__desc">
+              <dd class="feature-card__value">6.2<span class="feature-card__unit">%</span></dd>
+              <dd class="feature-card__desc">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis mollitia corporis
                 facere.
-              </p>
+              </dd>
             </div>
-          </article>
+          </dl>
 
           <!-- Feature Card: IBU -->
-          <article class="feature-card">
-            <header class="feature-card__header">
-              <h3 class="feature-card__title">IBU</h3>
-              <p class="feature-card__subtitle">International Bitterness Units</p>
-            </header>
+          <dl class="feature-card">
+            <div class="feature-card__header">
+              <dt class="feature-card__title">IBU</dt>
+              <dd class="feature-card__subtitle">International Bitterness Units</dd>
+            </div>
             <div class="feature-card__body">
-              <span class="feature-card__value">51<span class="feature-card__unit">.1</span></span>
-              <p class="feature-card__desc">
+              <dd class="feature-card__value">51<span class="feature-card__unit">.1</span></dd>
+              <dd class="feature-card__desc">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis mollitia corporis
                 facere.
-              </p>
+              </dd>
             </div>
-          </article>
+          </dl>
 
           <!-- Feature Card: O.G. (Original Gravity - replaced duplicate ABV) -->
-          <article class="feature-card">
-            <header class="feature-card__header">
-              <h3 class="feature-card__title">O.G.</h3>
-              <p class="feature-card__subtitle">Original Gravity</p>
-            </header>
+          <dl class="feature-card">
+            <div class="feature-card__header">
+              <dt class="feature-card__title">O.G.</dt>
+              <dd class="feature-card__subtitle">Original Gravity</dd>
+            </div>
             <div class="feature-card__body">
-              <span class="feature-card__value">1.05<span class="feature-card__unit"></span></span>
-              <p class="feature-card__desc">
+              <dd class="feature-card__value">1.05<span class="feature-card__unit"></span></dd>
+              <dd class="feature-card__desc">
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Debitis mollitia corporis
                 facere.
-              </p>
+              </dd>
             </div>
-          </article>
+          </dl>
         </div>
       </section>
 
       <!-- Section 3: Mouthfeel -->
-      <section class="mouthfeel">
+      <section class="section mouthfeel">
         <h2 class="mouthfeel__title">Mouthfeel</h2>
         <div class="mouthfeel__content">
           <div class="mouthfeel__video-block">
@@ -161,10 +160,10 @@
       </section>
 
       <!-- Section 4: Flavors -->
-      <section class="flavors">
+      <section class="section flavors">
         <!-- Flavor Card 1 -->
         <article class="flavor-card flavor-card--tropical">
-          <img src="img/Green-LSS.png" alt="Green Splash Background" class="flavor-card__bg" />
+          <img src="img/Green-LSS.png" alt="" class="flavor-card__bg" aria-hidden="true" />
           <div class="flavor-card__content">
             <h3 class="flavor-card__title">Tropical</h3>
             <p class="flavor-card__desc">
@@ -176,7 +175,7 @@
 
         <!-- Flavor Card 2 -->
         <article class="flavor-card flavor-card--pink">
-          <img src="img/Green-LSS.png" alt="Pink Splash Background" class="flavor-card__bg" />
+          <img src="img/Green-LSS.png" alt="" class="flavor-card__bg" aria-hidden="true" />
           <div class="flavor-card__content">
             <h3 class="flavor-card__title">Pink</h3>
             <p class="flavor-card__desc">
@@ -188,7 +187,7 @@
 
         <!-- Flavor Card 3 -->
         <article class="flavor-card flavor-card--caramel">
-          <img src="img/splat-black.png" alt="Black Splash Background" class="flavor-card__bg" />
+          <img src="img/splat-black.png" alt="" class="flavor-card__bg" aria-hidden="true" />
           <div class="flavor-card__content">
             <h3 class="flavor-card__title">Caramel-Malt</h3>
             <p class="flavor-card__desc">
@@ -207,7 +206,7 @@
       </section>
 
       <!-- Section 5: Availability -->
-      <section class="availability">
+      <section class="section availability">
         <span class="availability__subtitle">Availability</span>
         <h2 class="availability__title">Year Round</h2>
 
@@ -252,7 +251,7 @@
       </section>
 
       <!-- Section 6: Recipes / Banner -->
-      <section class="recipes">
+      <section class="section recipes">
         <div class="recipes__image-wrapper">
           <img
             src="./img/DTH_ProgramBanner.jpg"
