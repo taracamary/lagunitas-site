@@ -14,16 +14,15 @@ export default defineConfig({
   resolve: {
     alias: {
       '@': path.resolve(rootDir, 'src'),
-      '@styles': path.resolve(rootDir, 'src/styles'),
+      '@scss': path.resolve(rootDir, 'src/scss'),
       '@js': path.resolve(rootDir, 'src/js'),
-      '@assets': path.resolve(rootDir, 'src/assets'),
     },
   },
   css: {
     preprocessorOptions: {
       scss: {
         api: 'modern-compiler',
-        loadPaths: [path.resolve(rootDir, 'src/styles')],
+        loadPaths: [path.resolve(rootDir, 'src/scss')],
       },
     },
   },

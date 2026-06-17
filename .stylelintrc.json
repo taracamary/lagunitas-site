@@ -1,7 +1,7 @@
 {
   "extends": ["stylelint-config-standard-scss"],
   "plugins": ["stylelint-order"],
-  "ignoreFiles": ["dist/**", "node_modules/**", "style.css", "script.js"],
+  "ignoreFiles": ["dist/**", "node_modules/**"],
   "rules": {
     "no-empty-source": null,
     "property-no-vendor-prefix": null,

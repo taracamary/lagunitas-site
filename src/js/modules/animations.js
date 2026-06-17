@@ -1,7 +1,7 @@
-export const initAnimations = (lenis) => {
-  const { gsap } = window;
-  const { ScrollTrigger } = window;
+import { gsap } from 'gsap';
+import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+export const initAnimations = (lenis) => {
   gsap.registerPlugin(ScrollTrigger);
   lenis.on('scroll', ScrollTrigger.update);
   gsap.ticker.add((time) => lenis.raf(time * 1000));
